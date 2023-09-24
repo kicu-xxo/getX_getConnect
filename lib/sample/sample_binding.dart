@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:study_note/sample_controller.dart';
+import 'package:study_note/sample/sample_controller.dart';
 
 class SampleBinding extends Bindings {
   @override

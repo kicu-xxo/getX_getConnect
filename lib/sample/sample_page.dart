@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:study_note/sample_controller.dart';
+import 'package:study_note/sample/sample_controller.dart';
 
 class SamplePage extends GetView<SampleController> {
   const SamplePage({Key? key}) : super(key: key);
@@ -10,21 +10,31 @@ class SamplePage extends GetView<SampleController> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Get Connect with State Mixins "),
+          title: const Text("GetConnect TEST"),
         ),
         body: controller.obx(
           (state) {
-            print(state);
+            // print('sample_page state => $state');
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
+                  crossAxisCount: 1, childAspectRatio: 7.1),
               itemBuilder: (BuildContext context, int index) {
-                return null;
+                return Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('id : ${state![index].id.toString()}'),
+                      Text('userId :  ${state[index].userId.toString()}'),
+                      Text('title : ${state[index].title.toString()}'),
+                    ],
+                  ),
+                );
               },
             );
           },
           onEmpty: const Text("empty"),
           onError: (error) {
+            print('sample_page error');
             return const Text('error');
           },
           onLoading: const CircularProgressIndicator(),
